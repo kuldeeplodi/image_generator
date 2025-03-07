@@ -22,7 +22,7 @@ import star_group from './star_group.png'
 import credit_star from './credit_star.svg'
 import profile_icon from './profile_icon.png'
 
-const assets = {
+export const assets = {
     logo,
     logo_icon,
     facebook_icon,
@@ -39,7 +39,7 @@ const assets = {
     credit_star,
     profile_icon
 }
-export default assets
+
 
 export const stepsData = [
     {
