@@ -1,8 +1,6 @@
 import { div } from "motion/react-client";
 import React from "react";
-
 import {assets,plans }from "../assets/assets";
-// import plans from "../assets/assets";
 import Footer from "../components/Footer";
 import { motion } from "motion/react";
 
@@ -33,4 +31,4 @@ const BuyCredit = () => {
   );
 };
 
-export default BuyCredit;
+export default BuyCredit; 
