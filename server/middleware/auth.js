@@ -8,7 +8,7 @@ return res.json({success:false,message:"not authorized Login again"})
     try{
         const token_decode=jwt.verify(token,process.env.JWT_SECRET)
         if(token_decode.id){
-            req.body.UserId=token_decode.id;
+            req.body.userId=token_decode.id;
         }
         else{
             return res.json({success:false,message:"not authorized Login again"})
