@@ -10,7 +10,7 @@ const userSchema=new mongoose.Schema({
   , password:{type:String,
     required:true
   },
-  creditBalance: { type: Number,  default: 5} // ✅ Default: 10
+  creditBalance: { type: Number,  default: 10} // ✅ Default: 10
 
 
 })

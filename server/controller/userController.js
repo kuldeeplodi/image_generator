@@ -64,40 +64,26 @@ const loginUser = async (req, res) => {
 
 const userCredits = async (req, res) => {
   try {
-    console.log("✅ Received Request Body:", req.body);
-
-    const { userId } = req.body; // Extract userId
-    if (!userId) {
-      return res.status(400).json({ success: false, message: "Missing userId in request" });
-    }
+    const { userId } = req.body;
 
     const user = await userModel.findById(userId);
-    if (!user) {
-      return res.status(404).json({ success: false, message: "User not found" });
-    }
-
-    console.log("✅ User Found:", user);
-
-    if (user.creditBalance === undefined) {
-      return res.status(400).json({ success: false, message: "Credit balance not found for user" });
-    }
-
-    console.log("✅ Credit Balance:", user.creditBalance);
-
-    return res.json({
+    res.json({
       success: true,
       credits: user.creditBalance,
       user: { name: user.name },
     });
-  } catch (err) {
-    console.error("❌ Error in userCredits:", err);
-    return res.status(500).json({ success: false, message: "Internal Server Error" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
   }
 };
 
+const razorpayInstance=new razorpay({
+  key_id:process.env.RAZORPAY_KEY_ID,
+  key_secret:process.env.RAZORPAY_KEY_SECRET
+})
 
 
-
-
+// const paymentRazor
 const userController = { registerUser, loginUser, userCredits };
 export default userController;

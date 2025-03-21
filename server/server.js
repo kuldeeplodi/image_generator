@@ -3,19 +3,19 @@ import express from "express";
 import cors from "cors";
 import userController from "./controller/userController.js"; // Ensure the case matches
 
-
 import connectedDB from "./config/mongodb.js";
 import userRouter from "./router/userRouter.js";
+import imageRouter from "./router/imageRouter.js";
 const port = process.env.PORT || 4000;
 const app = express();
 
 app.use(express.json());
 app.use(cors());
 
-
 await connectedDB(); // Ensures DB is connected before starting the server
- 
-app.use("/api/user",userRouter)
+
+app.use("/api/user", userRouter);
+app.use("/api/image", imageRouter);
 
 app.get("/", (req, res) => {
   res.send("API working");

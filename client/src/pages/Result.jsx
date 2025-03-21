@@ -1,15 +1,17 @@
 import { div, form } from 'motion/react-client'
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
 import {assets} from '../assets/assets'
 import { motion } from 'motion/react'
+import { AppContext } from '../context/AppContext'
 
 const Result = () => {
   const [image, setImage] = useState(assets.sample_img_2)
   const [loading, setLoading] = useState(false)
   const [isImageLoaded,setIsImageLoaded]=useState(false)
   const[input,setInput]=useState('')
-
+   
+  const {generateImage}=useContext(AppContext)
   const onSubmitHandler=async(e)=>{
 e.preventDefault()
 setLoading(true)
